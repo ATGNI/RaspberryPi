@@ -20,7 +20,8 @@
             "dependsOn": "RaspberryPiPublish",
             "presentation": {
                 "reveal": "always",
-                "panel": "new"
+                "panel": "new",
+                "close": true
             },
             "windows": {
                 "command": "copy bin\\linux-arm\\publish\\ -Destination P:${workspaceFolderBasename} -Recurse -Container:$false"
