@@ -53,8 +53,9 @@ Hit Return (this will do the equivalent of an Edit/Copy)
 > SSH pi@raspberrypi.local
 ```
 In response to fingerprint message.. type `Yes`\
-Password is `raspberry`
-## You're in! Configure SSH to eliminate future password entry
+Password is `raspberry`\
+You're in! 
+## Configure SSH to eliminate future password entry
 ```
 $mkdir .ssh
 $cd .ssh
