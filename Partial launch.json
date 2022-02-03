@@ -1,0 +1,20 @@
+,
+        {
+            "name": ".NET Core Launch (remote)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "RaspberryPiDeploy",
+            "program": "dotnet",
+            "args": ["/home/pi/${workspaceFolderBasename}/${workspaceFolderBasename}.dll"],
+            "cwd": "/home/pi/${workspaceFolderBasename}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}",
+                "pipeProgram": "ssh",
+                "pipeArgs": [
+                    "pi@raspberrypi"
+                ],
+                "debuggerPath": "/home/pi/vsdbg/vsdbg"
+            }
+        }
