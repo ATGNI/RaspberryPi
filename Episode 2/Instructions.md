@@ -1,29 +1,26 @@
-// Instructions
-
-I've used "$" to denote Raspberry Pi commands and ">" to indicate windows command prompt (cmd.exe) commands. 
+# Instructions
+I've used `$` to denote Raspberry Pi commands and `>` to indicate windows command prompt (cmd.exe) commands. 
 Let me know if you spot any errors so that I can correct them. Make sure you start off in your home directory (in my case C:\Users\dave).
-
 The instructions assume you've installed VS Code and .NET on your Windows PC.
-
-// Install DOTNET 6 on Raspberry Pi
-
+## Install .NET 6 on Raspberry Pi
+```
 $wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet6pi/master/install.sh | sudo bash
-
-// The above command/script was expertly pieced together by Pete Gallagher (see References).
-// Let's install the .NET debugger on the Raspberry Pi
-
+```
+The above command/script was expertly pieced together by Pete Gallagher (see References).
+## Install the .NET debugger on the Raspberry Pi
+```
 $curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
-
-// Let's create a VS Code project
-
->dotnet new console -o MyFirstApp
->code MyFirstApp
+```
+## Let's create a VS Code project
+```
+> dotnet new console -o MyFirstApp
+> code MyFirstApp
+```
 Click Yes to create "Required Assets"
-
-// Update the Tasks.json file. Variation on a theme by Pete Gallagher to use Samba instead
-// Open the tasks.json file and add the following two tasks below the “watch” task, including that first comma! 
-// Change the P: drive to your mapped drive!
-
+## Update the `tasks.json` file. 
+Variation on a theme by Pete Gallagher to use Samba instead. Open the tasks.json file and add the following two tasks below the “watch” task, including that first comma! 
+Change the `P:` drive to your mapped drive!
+```
 ,
         {
             "label": "RaspberryPiPublish",
@@ -53,9 +50,10 @@ Click Yes to create "Required Assets"
             },
             "problemMatcher": []
         }
-
-// Update the Launch.json file. Edit/Copy the following text, including the comma!
-
+```
+## Update the `launch.json` file
+Edit/Copy the following text, including the comma!
+```
 ,
         {
             "name": ".NET Core Launch (remote)",
@@ -76,10 +74,8 @@ Click Yes to create "Required Assets"
                 "debuggerPath": "/home/pi/vsdbg/vsdbg"
             }
         }
-
-// Update pipeArgs with user@host
-
-// References:
-
-https://docs.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode
+```
+Update `pipeArgs` with your user@host
+## References:
+https://docs.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode \
 https://www.petecodes.co.uk/deploying-and-debugging-raspberry-pi-net-applications-using-vs-code/ (Pete Gallagher)
