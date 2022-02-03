@@ -25,30 +25,30 @@ network={
  psk="secret"
 }
 
->COPY wpa_supplicant.conf H:
->H:
+> COPY wpa_supplicant.conf H:
+> H:
 
 // Create an empty SSH file to enable SSH after first boot
 
->COPY NUL SSH
->DIR
+> COPY NUL SSH
+> DIR
 
 // Should see the two files at the bottom. 
 // Windows "Eject" the Micro SD Card 
 // Insert SD Card in Raspberry Pi and power on and wait for green light to quiesce
 
->MKDIR .SSH
->CD .SSH
->SSH-KEYGEN 
+> MKDIR .SSH
+> CD .SSH
+> SSH-KEYGEN 
 (select defaults)
->DIR
->TYPE ID_RSA.PUB
+> DIR
+> TYPE ID_RSA.PUB
 highlight/select the cryptic looking text. This is the public 'key'
 Hit Return (this will do the equivalent of an Edit/Copy)
 
 // Login to the raspberry pi
 
->SSH pi@raspberrypi.local
+> SSH pi@raspberrypi.local
 In response to fingerprint message.. type "Yes"
 Password is "raspberry"
 
@@ -64,13 +64,13 @@ $exit
 
 // Back at Windows. Make a note of Workgroup name
 
->SYSTEMINFO
+> SYSTEMINFO
 
 // Note the "Domain:" line for your PC's Workgroup name. Usually "WORKGROUP"
 
 // SSH back into the Raspberry Pi and check no password
 
->SSH pi@raspberrypi.local
+> SSH pi@raspberrypi.local
 
 // Upgrade Pi to latest software
 
@@ -107,14 +107,14 @@ $sudo reboot
 
 // Check SSH'ing back into Raspberry Pi. Note, no ".local" because joined Windows WORKGROUP
 
->SSH pi@raspberrypi
+> SSH pi@raspberrypi
 
 // Windows thinks it's a different host, so Fingerprint message will appear again. Dismiss with "Yes"
 
 // Map Network Drive
 
->NET USE P: \\raspberrypi\pishare /USER:pi raspberry /PERSISTENT:YES
+> NET USE P: \\raspberrypi\pishare /USER:pi raspberry /PERSISTENT:YES
 
 // Unmap Network Drive (if you need to)
 
->NET USE P: /DELETE
+> NET USE P: /DELETE
