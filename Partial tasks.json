@@ -1,0 +1,29 @@
+,
+        {
+            "label": "RaspberryPiPublish",
+            "command": "sh",
+            "type": "shell",
+            "dependsOn": "build",
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "\"dotnet publish -r linux-arm -o bin\\linux-arm\\publish --no-self-contained\""
+                ],
+                "problemMatcher": []
+            }
+            
+        },
+        {
+            "label": "RaspberryPiDeploy",
+            "type": "shell",
+            "dependsOn": "RaspberryPiPublish",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "windows": {
+                "command": "copy bin\\linux-arm\\publish\\ -Destination P:${workspaceFolderBasename} -Recurse -Container:$false"
+            },
+            "problemMatcher": []
+        }
