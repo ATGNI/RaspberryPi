@@ -81,5 +81,5 @@ Click Yes to create "Required Assets"
 
 // References:
 
-[Microsoft](https://docs.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode)
+https://docs.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode
 https://www.petecodes.co.uk/deploying-and-debugging-raspberry-pi-net-applications-using-vs-code/ (Pete Gallagher)
