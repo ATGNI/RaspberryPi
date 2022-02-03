@@ -1,4 +1,5 @@
-I've used "$" to denote Raspberry Pi commands and ">" to indicate windows command prompt (cmd.exe) commands. Let me know if you spot any errors so that I can correct them. I had two CMD.EXE windows running whilst I did this to easily switch back and forth. Make sure you start off in your home directory (in my case C:\Users\dave).
+I've used "$" to denote Raspberry Pi commands and ">" to indicate windows command prompt (cmd.exe) commands. 
+Let me know if you spot any errors so that I can correct them. Make sure you start off in your home directory (in my case C:\Users\dave).
 
 // Download/install the Raspberry Pi Imager here:
 
