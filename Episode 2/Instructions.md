@@ -6,8 +6,9 @@ The instructions assume you've installed VS Code and .NET on your Windows PC.
 ```
 $wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet6pi/master/install.sh | sudo bash
 ```
-The above command/script was expertly pieced together by Pete Gallagher (see References).
+The above command/script was expertly pieced together by Pete Gallagher [^1]
 ## Install the .NET debugger on the Raspberry Pi
+Documented at the Microsoft web site [^2]
 ```
 $curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
 ```
@@ -18,7 +19,7 @@ $curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
 ```
 Click Yes to create "Required Assets"
 ## Update the `tasks.json` file. 
-Variation on a theme by Pete Gallagher to use Samba instead. Open the tasks.json file and add the following two tasks below the “watch” task, including that first comma! 
+Variation on a theme by Pete Gallagher[^1] to use Samba instead. Open the tasks.json file and add the following two tasks below the “watch” task, including that first comma! 
 Change the `P:` drive to your mapped drive!
 ```
 ,
@@ -77,5 +78,5 @@ Edit/Copy the following text, including the comma!
 ```
 Update `pipeArgs` with your user@host
 ## References:
-https://docs.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode \
-https://www.petecodes.co.uk/deploying-and-debugging-raspberry-pi-net-applications-using-vs-code/ (Pete Gallagher)
+[^1]: https://www.petecodes.co.uk/deploying-and-debugging-raspberry-pi-net-applications-using-vs-code/ (Pete Gallagher)
+[^2]: https://docs.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode
