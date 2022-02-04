@@ -29,7 +29,6 @@ network={
 > H:
 ```
 ##  Create an empty SSH file to enable SSH after first boot
-DOS
 ```
 > COPY NUL SSH
 > DIR
