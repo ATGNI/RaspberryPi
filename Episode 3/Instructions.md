@@ -4,7 +4,8 @@ Component List
 - LED (The short leg is know as the `cathode` and is connected to the 0V/GND, the longer leg is the `anode` and is connected to the Raspberry Pi GPIO pin)
 - 330ohm resistor. Larger values are ok, eg 1k, 2k, etc.. the larger it is the dimmer the LED will be
 - push to make switch
-- breaboard jumper wires
+- GPIO Breakout Expansion Board inc Ribbon Cable (to get the Raspberry Pi 40-way GPIO connector onto a breadboard). This is optional in that you could just use female->male breadboard jumper wires. This one from [Amazon.co.uk](https://www.amazon.co.uk/dp/B07KB3JF68) works great. However, it will consume a lot of space on the breadboard.
+- breaboard jumper wires (male->male)
 
 Use a breadboard and build the circuit. Ensure the Raspberry is powered down for this to remove the possibility of shorting pins whilst constructing the circuit. Check wiring before powering/booting up the Raspberry Pi
 
