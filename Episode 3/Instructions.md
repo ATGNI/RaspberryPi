@@ -9,16 +9,19 @@ Component List
 Use a breadboard and build the circuit. Ensure the Raspberry is powered down for this to remove the possibility of shorting pins whilst constructing the circuit. Check wiring before powering/booting up the Raspberry Pi
 
 ![Circuit Diagram](circuit.png)
+
+![Raspberry Pin Pinout](gpiopinsv3.png)
 ## Enhance the application code
 We will enhance the application we created in `Part 2` and add some additional code that will allow you to read the state of a switch and flash the LED when it is push/depressed. If you create a new project, then you must remember to make all the modifications to the `launch.json` and `tasks.json` files that were described in `Part 2`. It demonstrates the principles of using both an `input` GPIO pin and an `output` GPIO pin. Within these instructions, I've used `$` to denote Raspberry Pi commands and `>` to indicate windows command prompt (cmd.exe) commands. 
 Let me know if you spot any errors so that I can correct them. Make sure you start off in your home directory (in my case C:\Users\dave).
 The instructions assume you've completed the previous two steps (`Part 1` and `Part 2`).
 ## Load up the Visual Code project
+Run the Command Prompt `cmd.exe` and then run up Visual Studio Code with teh application we created in `Part 2`
 ```
 > code MyFirstApp
 ```
-Select the Program.cs file and you should see something simple like this
-```
+Select the `Program.cs` file and you should see something simple like this
+```C#
 1    // See https://aka.ms/new-console-template for more information
 2    Console.WriteLine("Hello, World!");
 ```
