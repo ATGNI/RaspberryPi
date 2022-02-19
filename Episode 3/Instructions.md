@@ -12,17 +12,35 @@ Select the Program.cs file and you should see something simple like this
 2    Console.WriteLine("Hello, World!");
 ```
 ## Configure the application for GPIO
-We now need to add some of the GPIO code, but before we can do that we need to add the package that contains the GPIO library. To do this, click on the `Terminal` tab in the bottom window and type
+We now need to add some of the GPIO code, but before we can do that we need to add the `package` that contains the GPIO library. To do this, click on the `Terminal` tab in the bottom window and type
 ```
 dotnet add package System.Device.Gpio
 ```
-Excellent, we've now added the GPIO library so it will understand when we reference our GPIO pins. Insert a line at the top of the file to say we will be `using` the library
+You should see something like this
+```
+Determining projects to restore...
+  Writing C:\Users\dave\AppData\Local\Temp\tmp6661.tmp
+info : Adding PackageReference for package 'System.Device.Gpio' into project 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/system.device.gpio/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/system.device.gpio/index.json 401ms
+info : Restoring packages for C:\Users\dave\MyFirstApp\MyFirstApp.csproj...
+info : Package 'System.Device.Gpio' is compatible with all the specified frameworks in project 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
+info : PackageReference for package 'System.Device.Gpio' version '2.0.0' added to file 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
+info : Committing restore...
+info : Generating MSBuild file C:\Users\dave\MyFirstApp\obj\MyFirstApp.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: C:\Users\dave\MyFirstApp\obj\project.assets.json
+log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 93 ms).
+```
+Excellent, we've now added the GPIO library so it will understand when we reference our GPIO pins. Alongside the `Terminal` tab, is `Debug Console` and `Output`. Click on `Output` which is the default. 
+## Add GPIO code to the application
+Insert a line at the top of the file to say we will be `using` the library
 ```
 using System.Device.Gpio;
 
 ```
 We now need to add some addition lines, so copy the following code and paste it at the end of the `Program.cs` file.
 ```
+
 int pinSwitch = 17;
 int pinLED = 18;
 
