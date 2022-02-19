@@ -70,3 +70,5 @@ while (true) {
 - [Switch Bounce](https://www.allaboutcircuits.com/technical-articles/switch-bounce-how-to-deal-with-it/), whilst you think you might be closing the switch and it changes from one state to another, be aware that the switch will bounce in a sub-millisecond timeframe between both states before settling down. The code above wont expose that anomaly but if you start using event handlers it may become obvious. 
 ## Run the code
 On the left hand side, click the `Run and Debug` symbol and then at the top select the `.NET Core Launch (remote)` and then click on the `Start Debugging` or `F5`. Once it says `Hello World` in the `Output` window you know your code is running. Push that button/switch and you should see the LED flash three times.
+## References
+If you want to draw circuits, there's a great online resource [here](https://www.circuit-diagram.org/)
