@@ -34,12 +34,12 @@ log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 93 ms).
 Excellent, we've now added the GPIO library so it will understand when we reference our GPIO pins. Alongside the `Terminal` tab, is `Debug Console` and `Output`. Click on `Output` which is the default. 
 ## Add GPIO code to the application
 Insert a line at the top of the file to say we will be `using` the library
-```
+```C#
 using System.Device.Gpio;
 
 ```
 We now need to add some addition lines, so copy the following code and paste it at the end of the `Program.cs` file.
-```
+```C#
 
 int pinSwitch = 23;
 int pinLED = 24;
