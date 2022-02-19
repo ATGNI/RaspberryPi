@@ -41,8 +41,8 @@ using System.Device.Gpio;
 We now need to add some addition lines, so copy the following code and paste it at the end of the `Program.cs` file.
 ```
 
-int pinSwitch = 17;
-int pinLED = 18;
+int pinSwitch = 23;
+int pinLED = 24;
 
 GpioController myController = new GpioController (PinNumberingScheme.Logical);
 
