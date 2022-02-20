@@ -1,9 +1,4 @@
 # Build a circuit and run some code
-> kjhsc kajhsd  sakh dkasjhd ajksdh akjs dh 
-sjahd kahs dkash dkash daks hdka sdhah ds
-> jhas dkjha dkah sdkjah sdkah sdkjahsdka h
-
-
 ## Build a circuit
 Component List
 - LED (The short leg is know as the `cathode` and is connected to the 0V/GND, the longer leg is the `anode` and is connected to the Raspberry Pi GPIO pin)
