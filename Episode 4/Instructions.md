@@ -48,4 +48,5 @@ info : PackageReference for package 'System.IO.Ports' version '6.0.0' added to f
 info : Writing assets file to disk. Path: C:\Users\dave\MyFirstApp\obj\project.assets.json
 log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 1.93 sec).
 ```
+Error of 
 
