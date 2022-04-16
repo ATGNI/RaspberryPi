@@ -50,6 +50,11 @@ log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 1.93 sec).
 ```
 Error of 
 ![TTY Exception](Exception-Occured.gif)
+Support for the SerialPort can be found here:
+```
+https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0
+```
+Need to allow access to the serial port
 ```
 sudo usermod -a -G dialout pi
 ```
