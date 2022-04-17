@@ -1,3 +1,5 @@
+#Time of Flight Sensor
+And all these are happening very fast as we are working with the speed of light. Can you imagine how precise and fast the sensor is able to measure? Let me give you an example, as light travels 300,000km per second, if an object is 5m away from you, the time difference between the light leaves the camera and returning is roughly 33 nanoseconds which equals only 0.000000033 seconds!
 ```
 dotnet add package System.IO.Ports
 ```
@@ -49,7 +51,7 @@ info : Writing assets file to disk. Path: C:\Users\dave\MyFirstApp\obj\project.a
 log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 1.93 sec).
 ```
 Error of 
-![TTY Exception](Exception-Occured.gif)
+![TTY Exception](Exception%20Occured.gif)
 Support for the SerialPort can be found here:
 ```
 https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0
