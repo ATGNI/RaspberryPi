@@ -18,8 +18,45 @@ and it will repeatedly send this packet. The packet contains 16 bytes so we will
 and that translates to:
 
 ![Translation](hex-description.gif)\
-We will have to write the code to synchronise with these packets from the UART port and interpret the distance. We're basically looking for the `Frame Header` and `Function Mark`, then the intervening bytes making sure that `dis_status` is `zero` and that the `Sum Check` (Check Sum) is valid. The `distance` is represented as three bytes and measures millimetres. The first thing we need to do is load the appropriate libraries/package to be able to interface to the Raspberry Pi UART/Serial Ports. 
-## Configure the System.IO.Ports package
+We will have to write the code to synchronise with these packets from the UART port and interpret the distance. We're basically looking for the `Frame Header` and `Function Mark`, then the intervening bytes making sure that `dis_status` is `zero` and that the `Sum Check` (Check Sum) is valid. The `distance` is represented as three bytes and measures millimetres. To make this all come together we need to accomplish three steps;
+- Wire up the sensor to the Raspberry Pi
+- Configure the Raspberry Pi so that the UART Port works
+- Write some .NET code to read the data from the UART Port
+## Wire up the sensor to the Raspberry Pi
+When you purchase the Waveshare TOF Sensor, it comes with a connector specifically designed for breadboarding and the Raspberry Pi. The cable has a plug that connects to the sensor, with four coloured wires coming out of it;
+- VCC (RED) which connects to GPIO Pin 4 (5V)
+- GND (BLACK) which connects to GPIO Pin 6 (GND/0V)
+- RX (BLUE) which connects to GPIO Pin 8 (TXD) 
+- TX (YELLOW) which connects to GPIO Pin 10 (RXD)\
+
+The Blue (purple in drawing) wire is not strictly needed for this project as we won't be writing to the sensor. Power down the Raspberry Pi and connect the wires as per the diagram.
+
+![Circuit](https://www.waveshare.com/img/devkit/accBoard/TOF-Laser-Range-Sensor/TOF-Laser-Range-Sensor-details-13.jpg)
+
+Once connected, power up and boot the Raspberry Pi. After a short while, you should see the sensor green light flash every second to indicate the sensor is operating. We're now ready to configure the UART/Serial Port.
+## Configure the Raspberry Pi UART Port
+The Raspberry Pi UART Port we're going to use is `ttyAMA0`. This UART Port will be mapped to the two GPIO's 14 (TX) and 15 (RX) which correspecond to pins 8 and 10. If you have a look at the `devices` already configured on your Raspberry Pi with the following command:
+```
+$ ls /dev
+```
+you should see the following
+
+![Dev Folder](dev-folder.gif)
+which includes `ttyAMA0`. Hhowever, this is likely not wired to the GPIO pins. The next step is to edit the Raspberry Pi configuration file and configure the UART port to be made available. To do this, from the Raspberry Pi command prompt
+```
+$ sudo nano /boot/config.txt
+```
+Now, locate the line that says
+```
+# Additional overlays and parameters are documented /boot/overlays/README
+```
+and add the following line under it
+```
+dtoverlay=uart0
+```
+## Write some .NET Code
+The first thing we need to do is load the appropriate libraries/package to be able to interface to the Raspberry Pi UART/Serial Ports. 
+### Configure the System.IO.Ports package
 Load Visual Studio Code, navigate to the `Terminal` window and type the following;
 ```
 dotnet add package System.IO.Ports
