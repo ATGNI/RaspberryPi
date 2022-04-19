@@ -1,6 +1,8 @@
 # Raspberry Pi + .NET + UART/Serial Port
 ## Introduction
 In this episode we'll look at using the Raspberry Pi to write some code to read from the UART/Serial port. To help us generate some input from the UART port we're going to use a sensor that will measure the distance to a remote object. The sensor will then report the distance on the UART port. This is done using a Time of Flight sensor/algorithm.
+
+There are many use cases for wanting to use a distance sensor, but as an example I use one in my garage. The distance sensor is placed on the front wall of the garage. As the car is driven into the garage, the distance sensor works out the distance between the car and the front garage wall. As the car gets closer to the wall and the distance gets shorter, the Raspberry Pi displays an indication as to whether the car is fully enclosed in the garage such that its safe to close the garage door. This distance is 1.5m (1500mm). I can then safely close the garage door knowing the car is far enough into the garage.
 ## Time of Flight Sensor
 One of the most common Time of Flight sensors is the [VL53L1X sensor](https://www.st.com/resource/en/datasheet/vl53l1x.pdf) from STMicroElectronics. This sensor uses a Class1 940nm invisible laser, together with a laser-ranging sensor accurate up to 4m, producing measurements up to 50 times a second. The time of flight algorithm measures the time from sending a laser pulse to the time it's reflected and received on the sensor. To give you a sense of the speed, light travels 300,000km per second, if an object is 5m away, the time difference between the light leaving the laser and returning is roughly 33 nanoseconds (0.000000033 seconds)! Measuring 1cm would take 67 pico seconds!
 
@@ -42,7 +44,7 @@ $ ls /dev
 you should see the following
 
 ![Dev Folder](dev-folder.gif)
-which includes `ttyAMA0`. Hhowever, this is likely not wired to the GPIO pins. The next step is to edit the Raspberry Pi configuration file and configure the UART port to be made available. To do this, from the Raspberry Pi command prompt
+which includes `ttyAMA0`. However, this is likely not wired to the GPIO pins. The next step is to edit the Raspberry Pi configuration boot file and configure the UART port to be made available. To do this, from the Raspberry Pi command prompt, use the `nano` editor.
 ```
 $ sudo nano /boot/config.txt
 ```
@@ -54,15 +56,38 @@ and add the following line under it
 ```
 dtoverlay=uart0
 ```
+You should now have the following:
+
+![config](dt-overlay.gif)
+
+Reboot the Raspberry Pi
+```
+$ sudo reboot
+```
+Let's test if the serial port is active/running. Remember, that the sensor is constantly producing packets/bytes, so these should be appearing on the UART/Serial Port. We can do a simple test to see if this is the case
+```
+$ cat < /dev/ttyAMA0
+```
+You should see a constant stream of apparent gibberish. CTRL-C to quit.
+
+![gibberish](uart-traffic.gif)
+If you get an Access Denied/Permission error, it's likely that your user is not permissioned for the UART Port. In this case, issue the following command 
+```
+$ sudo usermod -a -G dialout pi
+```
+Then reboot the Raspberry Pi
+```
+$ sudo reboot
+```
+Then try the `cat < /dev/ttyAMA0` test again. If you're still having problems/issues, put a question in the video comments and I'll try to help. Hopefully, you're successful at this point and we're good to go on some coding.
 ## Write some .NET Code
 The first thing we need to do is load the appropriate libraries/package to be able to interface to the Raspberry Pi UART/Serial Ports. 
 ### Configure the System.IO.Ports package
-Load Visual Studio Code, navigate to the `Terminal` window and type the following;
+Load Visual Studio Code, navigate to the `Terminal` tab/window and type the following;
 ```
 dotnet add package System.IO.Ports
 ```
-This will add all the support you need to be able to `read` and `write` to the UART/Serial Port. For information on what functionality is available look at the page on [System.IO.Ports](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0).\
-When you run the command, you should see something similar to the this
+This will add all the support you need to be able to `read` and `write` to the UART/Serial Port. For information on what functionality is available look at the page on [System.IO.Ports](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0). When you run the command, you should see something similar to the this
 ```
   Determining projects to restore...
   Writing C:\Users\dave\AppData\Local\Temp\tmpB7F5.tmp
@@ -110,7 +135,7 @@ info : PackageReference for package 'System.IO.Ports' version '6.0.0' added to f
 info : Writing assets file to disk. Path: C:\Users\dave\MyFirstApp\obj\project.assets.json
 log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 1.93 sec).
 ```
-You need to then replace all the code in your `MyFirstApp` with this:
+You need to then replace all the previous code in your `MyFirstApp` with this:
 ```C#
 using System.IO.Ports;
 using System.Text;
@@ -207,13 +232,8 @@ while (true) {
     Checksum += Value;  // Keep this running..
 }
 ```
-Error of 
-![TTY Exception](Exception%20Occured.gif)
-Support for the SerialPort can be found here:
-```
-https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0
-```
-Need to allow access to the serial port
-```
-sudo usermod -a -G dialout pi
-```
+It's running a simple state machine that attempts to look for the first three bytes equalling `57` then `00` then `FF`. If any of that fails, it resets the state machine to look for that `57`. So, we're ready to go! Click on Run and Debug on the left of Visual Studio Code. Then make sure you've selected `.NET Core Launch (remote)` and then click the run button to the left of it. After a few seconds you should see something smilar to this
+
+![Debug Output](debug-output.gif)
+
+The hex numbers represent the 16 bytes that the sensor emits for each distance calculation it does. The last hex byte, just after the preceding `FF`, is the `Check Sum`. The `Check Sum` is calculated as the sum of all the previous bytes. The C# code adds each byte with `Checksum += Value` and then checks its value on the last byte to ensure it matches. It's a simple validation check to ensure that there's been no interference in the byte stream. The `Distance is` numbers are all in millimeters.
