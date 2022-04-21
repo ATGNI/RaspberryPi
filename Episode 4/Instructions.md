@@ -232,7 +232,7 @@ while (true) {
     Checksum += Value;  // Keep this running..
 }
 ```
-It's running a simple state machine that attempts to look for the first three bytes equalling `57` then `00` then `FF`. If any of that fails, it resets the state machine to look for that `57`. So, we're ready to go! Click on Run and Debug on the left of Visual Studio Code. Then make sure you've selected `.NET Core Launch (remote)` and then click the run button to the left of it. After a few seconds you should see something smilar to this
+The code is also available [here on GitHub](Program.cs). It's running a simple state machine that attempts to look for the first three bytes equalling `57` then `00` then `FF`. If any of that fails, it resets the state machine to look for that `57`. So, we're ready to go! Click on Run and Debug on the left of Visual Studio Code. Then make sure you've selected `.NET Core Launch (remote)` and then click the run button to the left of it. After a few seconds you should see something smilar to this
 
 ![Debug Output](debug-output.gif)
 
