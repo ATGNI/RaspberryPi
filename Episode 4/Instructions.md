@@ -29,7 +29,7 @@ When you purchase the Waveshare TOF Sensor, it comes with a connector specifical
 - VCC (RED) which connects to GPIO Pin 4 (5V)
 - GND (BLACK) which connects to GPIO Pin 6 (GND/0V)
 - RX (BLUE) which connects to GPIO Pin 8 (TXD) 
-- TX (YELLOW) which connects to GPIO Pin 10 (RXD)\
+- TX (YELLOW) which connects to GPIO Pin 10 (RXD)
 
 The Blue (purple in drawing) wire is not strictly needed for this project as we won't be writing to the sensor. Power down the Raspberry Pi and connect the wires as per the diagram.
 
