@@ -86,7 +86,7 @@ Load Visual Studio Code, navigate to the `Terminal` tab/window and type the foll
 ```
 dotnet add package System.IO.Ports
 ```
-This will add all the support you need to be able to `read` and `write` to the UART/Serial Port. For information on what functionality is available look at the page on [System.IO.Ports](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0). When you run the command, you should see something similar to the this
+This will add all the support you need to be able to `read` and `write` to the UART/Serial Port. For information on what functionality is available look at the page on [System.IO.Ports](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0). When you run the command, you should see something similar to the this which is quite verbose the first time your PC sees this `add package`.
 ```
   Determining projects to restore...
   Writing C:\Users\dave\AppData\Local\Temp\tmpB7F5.tmp
@@ -133,6 +133,18 @@ info : Package 'System.IO.Ports' is compatible with all the specified frameworks
 info : PackageReference for package 'System.IO.Ports' version '6.0.0' added to file 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
 info : Writing assets file to disk. Path: C:\Users\dave\MyFirstApp\obj\project.assets.json
 log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 1.93 sec).
+```
+although you might see something as brief as this
+```
+  Determining projects to restore...
+  Writing C:\Users\dave\AppData\Local\Temp\tmp537B.tmp
+info : Adding PackageReference for package 'System.IO.Ports' into project 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/system.io.ports/index.json
+info : Restoring packages for C:\Users\dave\MyFirstApp\MyFirstApp.csproj...
+info : Package 'System.IO.Ports' is compatible with all the specified frameworks in project 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
+info : PackageReference for package 'System.IO.Ports' version '6.0.0' added to file 'C:\Users\dave\MyFirstApp\MyFirstApp.csproj'.
+info : Assets file has not changed. Skipping assets file writing. Path: C:\Users\dave\MyFirstApp\obj\project.assets.json
+log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 85 ms).
 ```
 ### C# Code
 You need to then replace all the previous code in your `MyFirstApp` with this:
