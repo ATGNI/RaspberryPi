@@ -134,6 +134,7 @@ info : PackageReference for package 'System.IO.Ports' version '6.0.0' added to f
 info : Writing assets file to disk. Path: C:\Users\dave\MyFirstApp\obj\project.assets.json
 log  : Restored C:\Users\dave\MyFirstApp\MyFirstApp.csproj (in 1.93 sec).
 ```
+### C# Code
 You need to then replace all the previous code in your `MyFirstApp` with this:
 ```C#
 using System.IO.Ports;
@@ -231,7 +232,11 @@ while (true) {
     Checksum += Value;  // Keep this running..
 }
 ```
-The code is also available [here on GitHub](https://raw.githubusercontent.com/ATGNI/RaspberryPi/main/Episode%204/Program.cs) so you could simply copy (^A/^C) and paste (^V) or.. File/Open from VS Code the [URL](https://raw.githubusercontent.com/ATGNI/RaspberryPi/main/Episode%204/Program.cs). It's running a simple state machine that attempts to look for the first three bytes equalling `57` then `00` then `FF`. If any of that fails, it resets the state machine to look for that `57`. The multi-byte values such as `Distance` and `SystemTime` involve left shifting the byte by a number of bits using the `<<` operator. Each time/byte, we increment the shift effect by 8bits. So, we're ready to go! Click on Run and Debug on the left of Visual Studio Code. Then make sure you've selected `.NET Core Launch (remote)` and then click the run button to the left of it. After a few seconds you should see something similar to this
+The code is also available [here on GitHub](https://raw.githubusercontent.com/ATGNI/RaspberryPi/main/Episode%204/Program.cs) so you could simply copy (^A/^C) and paste (^V) or.. File/Open from VS Code the [URL](https://raw.githubusercontent.com/ATGNI/RaspberryPi/main/Episode%204/Program.cs). 
+### Code Breakdown
+It opens and starts reading bytes (characters) from the `/dev/ttyAMA0` device. Although there is a timeout timer on both the read and write (we're not writing), we're not expecting the timer to ever fire, but should it do.. something is wrong, and, we have a `try` and `catch` for the exception. Once we're reading bytes, we're in a position to start analysing them. To do this, we're running a simple [`state machine`](https://en.wikipedia.org/wiki/Finite-state_machine) that attempts to look for the first three bytes equalling `57` then `00` then `FF`. If any of that fails, it resets the state machine to look for that `57`. The multi-byte values such as `Distance` and `SystemTime` involve left shifting the byte by a number of bits using the `<<` operator. Each time/byte, we increment the shift effect by 8bits. So, we're ready to go! Click on Run and Debug on the left of Visual Studio Code. Then make sure you've selected `.NET Core Launch (remote)` and then click the run button to the left of it. 
+### Code Output
+After a few seconds you should see something similar to this
 
 ![Debug Output](debug-output.gif)
 
