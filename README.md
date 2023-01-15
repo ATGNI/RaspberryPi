@@ -4,4 +4,5 @@ This is a respository that includes a number of supporting files and commands, t
 🔴 [Episode 1](https://github.com/ATGNI/RaspberryPi/blob/main/Episode%201/Instructions.md) runs through configuring a brand new bare bones Raspberry Pi\
 🔴 [Episode 2](https://github.com/ATGNI/RaspberryPi/blob/main/Episode%202/Instructions.md) runs through setting up .NET and Visual Studio Code\
 🔴 [Episode 3](https://github.com/ATGNI/RaspberryPi/blob/main/Episode%203/Instructions.md) looks at a small application using GPIO pins\
-🔴 [Episode 4](https://github.com/ATGNI/RaspberryPi/blob/main/Episode%204/Instructions.md) looks at using the UART port to read a Time Of Flight sensor
+🔴 [Episode 4](https://github.com/ATGNI/RaspberryPi/blob/main/Episode%204/Instructions.md) looks at using the UART port to read a Time Of Flight sensor\
+🔴 [Episode 5](https://github.com/ATGNI/RaspberryPi/blob/main/Episode%205/Instructions.md) (COMING SOON) looks at making a not-smart electricity meter... smart 
