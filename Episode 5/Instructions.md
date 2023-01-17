@@ -26,7 +26,7 @@ I finally settled on the LED Pulse Sensor from [OpenEnergyMonitor](https://opene
 ## Set up Visual Studio Code
 ## Set up Raspberry Pi
 ### Install the Visual Studio Code Server
-This is the [page]((https://code.visualstudio.com/insiders/#linux) that describes the Insiders version of the VS Code Server
+This is the [page](https://code.visualstudio.com/insiders/#linux) that describes the Insiders version of the VS Code Server
 ```
 wget -O vscode_cli_alpine_x64_cli.tar.gz "https://code.visualstudio.com/sha/download?build=insider&os=cli-alpine-x64"
 gzip -d vscode_cli_alpine_x64_cli.tar.gz
